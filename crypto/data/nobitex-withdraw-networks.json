@@ -1,0 +1,2635 @@
+﻿{
+    "rls":  {
+                "networks":  [
+                                 "FIAT"
+                             ],
+                "fees":  {
+                             "FIAT":  {
+                                          "coin":  "RLS",
+                                          "amount":  "40000"
+                                      }
+                         }
+            },
+    "aave":  {
+                 "networks":  [
+                                  "BEP20 (BSC)"
+                              ],
+                 "fees":  {
+                              "BEP20 (BSC)":  {
+                                                  "coin":  "AAVE",
+                                                  "amount":  "0.015"
+                                              }
+                          }
+             },
+    "ada":  {
+                "networks":  [
+                                 "Cardano"
+                             ],
+                "fees":  {
+                             "Cardano":  {
+                                             "coin":  "ADA",
+                                             "amount":  "1"
+                                         }
+                         }
+            },
+    "aevo":  {
+                 "networks":  [
+                                  "ERC20"
+                              ],
+                 "fees":  {
+                              "ERC20":  {
+                                            "coin":  "AEVO",
+                                            "amount":  "45"
+                                        }
+                          }
+             },
+    "agld":  {
+                 "networks":  [
+                                  "ERC20"
+                              ],
+                 "fees":  {
+                              "ERC20":  {
+                                            "coin":  "AGLD",
+                                            "amount":  "5.4"
+                                        }
+                          }
+             },
+    "algo":  {
+                 "networks":  [
+                                  "Algorand"
+                              ],
+                 "fees":  {
+                              "Algorand":  {
+                                               "coin":  "ALGO",
+                                               "amount":  "0.01"
+                                           }
+                          }
+             },
+    "api3":  {
+                 "networks":  [
+                                  "ERC20"
+                              ],
+                 "fees":  {
+                              "ERC20":  {
+                                            "coin":  "API3",
+                                            "amount":  "4"
+                                        }
+                          }
+             },
+    "apt":  {
+                "networks":  [
+                                 "Aptos"
+                             ],
+                "fees":  {
+                             "Aptos":  {
+                                           "coin":  "APT",
+                                           "amount":  "0.02"
+                                       }
+                         }
+            },
+    "arb":  {
+                "networks":  [
+                                 "Arbitrum one"
+                             ],
+                "fees":  {
+                             "Arbitrum one":  {
+                                                  "coin":  "ARB",
+                                                  "amount":  "4"
+                                              }
+                         }
+            },
+    "auction":  {
+                    "networks":  [
+                                     "ERC20"
+                                 ],
+                    "fees":  {
+                                 "ERC20":  {
+                                               "coin":  "AUCTION",
+                                               "amount":  "0.36"
+                                           }
+                             }
+                },
+    "bch":  {
+                "networks":  [
+                                 "BCH"
+                             ],
+                "fees":  {
+                             "BCH":  {
+                                         "coin":  "BCH",
+                                         "amount":  "0.0005"
+                                     }
+                         }
+            },
+    "bico":  {
+                 "networks":  [
+                                  "ERC20"
+                              ],
+                 "fees":  {
+                              "ERC20":  {
+                                            "coin":  "BICO",
+                                            "amount":  "50"
+                                        }
+                          }
+             },
+    "bnb":  {
+                "networks":  [
+                                 "BEP20 (BSC)"
+                             ],
+                "fees":  {
+                             "BEP20 (BSC)":  {
+                                                 "coin":  "BNB",
+                                                 "amount":  "0.001"
+                                             }
+                         }
+            },
+    "btc":  {
+                "networks":  [
+                                 "BTC",
+                                 "Lightning",
+                                 "BEP20 (BSC)"
+                             ],
+                "fees":  {
+                             "Lightning":  {
+                                               "coin":  "BTC",
+                                               "amount":  "0.0000025"
+                                           },
+                             "BTC":  {
+                                         "coin":  "BTC",
+                                         "amount":  "0.00005"
+                                     },
+                             "BEP20 (BSC)":  {
+                                                 "coin":  "BTC",
+                                                 "amount":  "0.000012"
+                                             }
+                         }
+            },
+    "1m_btt":  {
+                   "networks":  [
+                                    "TRC20"
+                                ],
+                   "fees":  {
+                                "TRC20":  {
+                                              "coin":  "1M_BTT",
+                                              "amount":  "2.1"
+                                          }
+                            }
+               },
+    "cake":  {
+                 "networks":  [
+                                  "BEP20 (BSC)"
+                              ],
+                 "fees":  {
+                              "BEP20 (BSC)":  {
+                                                  "coin":  "CAKE",
+                                                  "amount":  "1"
+                                              }
+                          }
+             },
+    "cati":  {
+                 "networks":  [
+                                  "TON (the open network)"
+                              ],
+                 "fees":  {
+                              "TON (the open network)":  {
+                                                             "coin":  "CATI",
+                                                             "amount":  "4"
+                                                         }
+                          }
+             },
+    "dai":  {
+                "networks":  [
+                                 "Polygon",
+                                 "Arbitrum one"
+                             ],
+                "fees":  {
+                             "Arbitrum one":  {
+                                                  "coin":  "DAI",
+                                                  "amount":  "1"
+                                              },
+                             "Polygon":  {
+                                             "coin":  "DAI",
+                                             "amount":  "1"
+                                         }
+                         }
+            },
+    "dao":  {
+                "networks":  [
+                                 "ERC20"
+                             ],
+                "fees":  {
+                             "ERC20":  {
+                                           "coin":  "DAO",
+                                           "amount":  "64.8"
+                                       }
+                         }
+            },
+    "doge":  {
+                 "networks":  [
+                                  "Dogecoin"
+                              ],
+                 "fees":  {
+                              "Dogecoin":  {
+                                               "coin":  "DOGE",
+                                               "amount":  "5"
+                                           }
+                          }
+             },
+    "dogs":  {
+                 "networks":  [
+                                  "TON (the open network)"
+                              ],
+                 "fees":  {
+                              "TON (the open network)":  {
+                                                             "coin":  "DOGS",
+                                                             "amount":  "2500"
+                                                         }
+                          }
+             },
+    "dot":  {
+                "networks":  [
+                                 "Asset Hub Polkadot",
+                                 "ERC20"
+                             ],
+                "fees":  {
+                             "ERC20":  {
+                                           "coin":  "DOT",
+                                           "amount":  "1.19"
+                                       },
+                             "Asset Hub Polkadot":  {
+                                                        "coin":  "DOT",
+                                                        "amount":  "0.2"
+                                                    }
+                         }
+            },
+    "dydx":  {
+                 "networks":  [
+                                  "DYDX"
+                              ],
+                 "fees":  {
+                              "DYDX":  {
+                                           "coin":  "DYDX",
+                                           "amount":  "2"
+                                       }
+                          }
+             },
+    "edu":  {
+                "networks":  [
+                                 "BEP20 (BSC)"
+                             ],
+                "fees":  {
+                             "BEP20 (BSC)":  {
+                                                 "coin":  "EDU",
+                                                 "amount":  "7"
+                                             }
+                         }
+            },
+    "enj":  {
+                "networks":  [
+                                 "Enjin Relay Chain"
+                             ],
+                "fees":  {
+                             "Enjin Relay Chain":  {
+                                                       "coin":  "ENJ",
+                                                       "amount":  "1"
+                                                   }
+                         }
+            },
+    "ena":  {
+                "networks":  [
+                                 "ERC20"
+                             ],
+                "fees":  {
+                             "ERC20":  {
+                                           "coin":  "ENA",
+                                           "amount":  "5"
+                                       }
+                         }
+            },
+    "ens":  {
+                "networks":  [
+                                 "ERC20"
+                             ],
+                "fees":  {
+                             "ERC20":  {
+                                           "coin":  "ENS",
+                                           "amount":  "0.15"
+                                       }
+                         }
+            },
+    "a":  {
+              "networks":  [
+                               "Vaulta"
+                           ],
+              "fees":  {
+                           "Vaulta":  {
+                                          "coin":  "A",
+                                          "amount":  "0.1"
+                                      }
+                       }
+          },
+    "etc":  {
+                "networks":  [
+                                 "Ethereum Classic"
+                             ],
+                "fees":  {
+                             "Ethereum Classic":  {
+                                                      "coin":  "ETC",
+                                                      "amount":  "0.1"
+                                                  }
+                         }
+            },
+    "eth":  {
+                "networks":  [
+                                 "ERC20",
+                                 "Arbitrum one",
+                                 "BEP20 (BSC)",
+                                 "BASE"
+                             ],
+                "fees":  {
+                             "BASE":  {
+                                          "coin":  "ETH",
+                                          "amount":  "0.0002"
+                                      },
+                             "ERC20":  {
+                                           "coin":  "ETH",
+                                           "amount":  "0.0004"
+                                       },
+                             "Arbitrum one":  {
+                                                  "coin":  "ETH",
+                                                  "amount":  "0.0002"
+                                              },
+                             "BEP20 (BSC)":  {
+                                                 "coin":  "ETH",
+                                                 "amount":  "0.00035"
+                                             }
+                         }
+            },
+    "ethfi":  {
+                  "networks":  [
+                                   "ERC20"
+                               ],
+                  "fees":  {
+                               "ERC20":  {
+                                             "coin":  "ETHFI",
+                                             "amount":  "3"
+                                         }
+                           }
+              },
+    "glm":  {
+                "networks":  [
+                                 "ERC20"
+                             ],
+                "fees":  {
+                             "ERC20":  {
+                                           "coin":  "GLM",
+                                           "amount":  "9"
+                                       }
+                         }
+            },
+    "gmt":  {
+                "networks":  [
+                                 "BEP20 (BSC)"
+                             ],
+                "fees":  {
+                             "BEP20 (BSC)":  {
+                                                 "coin":  "GMT",
+                                                 "amount":  "25"
+                                             }
+                         }
+            },
+    "grt":  {
+                "networks":  [
+                                 "ERC20"
+                             ],
+                "fees":  {
+                             "ERC20":  {
+                                           "coin":  "GRT",
+                                           "amount":  "40"
+                                       }
+                         }
+            },
+    "gmx":  {
+                "networks":  [
+                                 "Arbitrum one"
+                             ],
+                "fees":  {
+                             "Arbitrum one":  {
+                                                  "coin":  "GMX",
+                                                  "amount":  "0.16"
+                                              }
+                         }
+            },
+    "hmstr":  {
+                  "networks":  [
+                                   "TON (the open network)"
+                               ],
+                  "fees":  {
+                               "TON (the open network)":  {
+                                                              "coin":  "HMSTR",
+                                                              "amount":  "500"
+                                                          }
+                           }
+              },
+    "hot":  {
+                "networks":  [
+                                 "ERC20"
+                             ],
+                "fees":  {
+                             "ERC20":  {
+                                           "coin":  "HOT",
+                                           "amount":  "4300"
+                                       }
+                         }
+            },
+    "jasmy":  {
+                  "networks":  [
+                                   "ERC20"
+                               ],
+                  "fees":  {
+                               "ERC20":  {
+                                             "coin":  "JASMY",
+                                             "amount":  "250"
+                                         }
+                           }
+              },
+    "jst":  {
+                "networks":  [
+                                 "TRC20"
+                             ],
+                "fees":  {
+                             "TRC20":  {
+                                           "coin":  "JST",
+                                           "amount":  "60"
+                                       }
+                         }
+            },
+    "ldo":  {
+                "networks":  [
+                                 "ERC20"
+                             ],
+                "fees":  {
+                             "ERC20":  {
+                                           "coin":  "LDO",
+                                           "amount":  "3"
+                                       }
+                         }
+            },
+    "link":  {
+                 "networks":  [
+                                  "ERC20",
+                                  "BEP20 (BSC)"
+                              ],
+                 "fees":  {
+                              "ERC20":  {
+                                            "coin":  "LINK",
+                                            "amount":  "0.15"
+                                        },
+                              "BEP20 (BSC)":  {
+                                                  "coin":  "LINK",
+                                                  "amount":  "0.1"
+                                              }
+                          }
+             },
+    "lpt":  {
+                "networks":  [
+                                 "ERC20"
+                             ],
+                "fees":  {
+                             "ERC20":  {
+                                           "coin":  "LPT",
+                                           "amount":  "0.5"
+                                       }
+                         }
+            },
+    "lrc":  {
+                "networks":  [
+                                 "ERC20"
+                             ],
+                "fees":  {
+                             "ERC20":  {
+                                           "coin":  "LRC",
+                                           "amount":  "40"
+                                       }
+                         }
+            },
+    "ltc":  {
+                "networks":  [
+                                 "LTC"
+                             ],
+                "fees":  {
+                             "LTC":  {
+                                         "coin":  "LTC",
+                                         "amount":  "0.001"
+                                     }
+                         }
+            },
+    "perp":  {
+                 "networks":  [
+                                  "ERC20"
+                              ],
+                 "fees":  {
+                              "ERC20":  {
+                                            "coin":  "PERP",
+                                            "amount":  "20"
+                                        }
+                          }
+             },
+    "1m_pepe":  {
+                    "networks":  [
+                                     "ERC20"
+                                 ],
+                    "fees":  {
+                                 "ERC20":  {
+                                               "coin":  "1M_PEPE",
+                                               "amount":  "0.4"
+                                           }
+                             }
+                },
+    "1k_shib":  {
+                    "networks":  [
+                                     "ERC20",
+                                     "BEP20 (BSC)"
+                                 ],
+                    "fees":  {
+                                 "ERC20":  {
+                                               "coin":  "1K_SHIB",
+                                               "amount":  "300"
+                                           },
+                                 "BEP20 (BSC)":  {
+                                                     "coin":  "1K_SHIB",
+                                                     "amount":  "100"
+                                                 }
+                             }
+                },
+    "1k_cheems":  {
+                      "networks":  [
+                                       "BEP20 (BSC)"
+                                   ],
+                      "fees":  {
+                                   "BEP20 (BSC)":  {
+                                                       "coin":  "1K_CHEEMS",
+                                                       "amount":  "836"
+                                                   }
+                               }
+                  },
+    "trx":  {
+                "networks":  [
+                                 "TRC20"
+                             ],
+                "fees":  {
+                             "TRC20":  {
+                                           "coin":  "TRX",
+                                           "amount":  "2"
+                                       }
+                         }
+            },
+    "uni":  {
+                "networks":  [
+                                 "ERC20",
+                                 "BEP20 (BSC)"
+                             ],
+                "fees":  {
+                             "ERC20":  {
+                                           "coin":  "UNI",
+                                           "amount":  "0.4"
+                                       },
+                             "BEP20 (BSC)":  {
+                                                 "coin":  "UNI",
+                                                 "amount":  "0.17"
+                                             }
+                         }
+            },
+    "usdc":  {
+                 "networks":  [
+                                  "BEP20 (BSC)"
+                              ],
+                 "fees":  {
+                              "BEP20 (BSC)":  {
+                                                  "coin":  "USDC",
+                                                  "amount":  "2.5"
+                                              }
+                          }
+             },
+    "usdt":  {
+                 "networks":  [
+                                  "Polygon",
+                                  "BEP20 (BSC)"
+                              ],
+                 "fees":  {
+                              "BEP20 (BSC)":  {
+                                                  "coin":  "USDT",
+                                                  "amount":  "0.7"
+                                              },
+                              "Polygon":  {
+                                              "coin":  "USDT",
+                                              "amount":  "0.7"
+                                          }
+                          }
+             },
+    "x":  {
+              "networks":  [
+                               "TON (the open network)"
+                           ],
+              "fees":  {
+                           "TON (the open network)":  {
+                                                          "coin":  "X",
+                                                          "amount":  "7000"
+                                                      }
+                       }
+          },
+    "xlm":  {
+                "networks":  [
+                                 "Stellar Lumens"
+                             ],
+                "fees":  {
+                             "Stellar Lumens":  {
+                                                    "coin":  "XLM",
+                                                    "amount":  "0.01"
+                                                }
+                         }
+            },
+    "xrp":  {
+                "networks":  [
+                                 "XRP"
+                             ],
+                "fees":  {
+                             "XRP":  {
+                                         "coin":  "XRP",
+                                         "amount":  "0.2"
+                                     }
+                         }
+            },
+    "1inch":  {
+                  "networks":  [
+                                   "ERC20",
+                                   "BEP20 (BSC)"
+                               ],
+                  "fees":  {
+                               "ERC20":  {
+                                             "coin":  "1INCH",
+                                             "amount":  "14"
+                                         },
+                               "BEP20 (BSC)":  {
+                                                   "coin":  "1INCH",
+                                                   "amount":  "2"
+                                               }
+                           }
+              },
+    "alpha":  {
+                  "networks":  [
+                                   "ERC20"
+                               ],
+                  "fees":  {
+                               "ERC20":  {
+                                             "coin":  "ALPHA",
+                                             "amount":  "250"
+                                         }
+                           }
+              },
+    "ankr":  {
+                 "networks":  [
+                                  "ERC20"
+                              ],
+                 "fees":  {
+                              "ERC20":  {
+                                            "coin":  "ANKR",
+                                            "amount":  "250"
+                                        }
+                          }
+             },
+    "atom":  {
+                 "networks":  [
+                                  "Cosmos"
+                              ],
+                 "fees":  {
+                              "Cosmos":  {
+                                             "coin":  "ATOM",
+                                             "amount":  "0.04"
+                                         }
+                          }
+             },
+    "avax":  {
+                 "networks":  [
+                                  "Avalanche"
+                              ],
+                 "fees":  {
+                              "Avalanche":  {
+                                                "coin":  "AVAX",
+                                                "amount":  "0.0104"
+                                            }
+                          }
+             },
+    "axs":  {
+                "networks":  [
+                                 "ERC20",
+                                 "BEP20 (BSC)"
+                             ],
+                "fees":  {
+                             "ERC20":  {
+                                           "coin":  "AXS",
+                                           "amount":  "1.7"
+                                       },
+                             "BEP20 (BSC)":  {
+                                                 "coin":  "AXS",
+                                                 "amount":  "0.5"
+                                             }
+                         }
+            },
+    "1b_babydoge":  {
+                        "networks":  [
+                                         "BEP20 (BSC)"
+                                     ],
+                        "fees":  {
+                                     "BEP20 (BSC)":  {
+                                                         "coin":  "1B_BABYDOGE",
+                                                         "amount":  "4"
+                                                     }
+                                 }
+                    },
+    "badger":  {
+                   "networks":  [
+                                    "ERC20"
+                                ],
+                   "fees":  {
+                                "ERC20":  {
+                                              "coin":  "BADGER",
+                                              "amount":  "5"
+                                          }
+                            }
+               },
+    "bal":  {
+                "networks":  [
+                                 "ERC20"
+                             ],
+                "fees":  {
+                             "ERC20":  {
+                                           "coin":  "BAL",
+                                           "amount":  "3"
+                                       }
+                         }
+            },
+    "banana":  {
+                   "networks":  [
+                                    "ERC20"
+                                ],
+                   "fees":  {
+                                "ERC20":  {
+                                              "coin":  "BANANA",
+                                              "amount":  "0.2"
+                                          }
+                            }
+               },
+    "band":  {
+                 "networks":  [
+                                  "ERC20"
+                              ],
+                 "fees":  {
+                              "ERC20":  {
+                                            "coin":  "BAND",
+                                            "amount":  "7"
+                                        }
+                          }
+             },
+    "bat":  {
+                "networks":  [
+                                 "ERC20"
+                             ],
+                "fees":  {
+                             "ERC20":  {
+                                           "coin":  "BAT",
+                                           "amount":  "20"
+                                       }
+                         }
+            },
+    "blur":  {
+                 "networks":  [
+                                  "ERC20"
+                              ],
+                 "fees":  {
+                              "ERC20":  {
+                                            "coin":  "BLUR",
+                                            "amount":  "50"
+                                        }
+                          }
+             },
+    "bnt":  {
+                "networks":  [
+                                 "ERC20"
+                             ],
+                "fees":  {
+                             "ERC20":  {
+                                           "coin":  "BNT",
+                                           "amount":  "5"
+                                       }
+                         }
+            },
+    "celr":  {
+                 "networks":  [
+                                  "ERC20"
+                              ],
+                 "fees":  {
+                              "ERC20":  {
+                                            "coin":  "CELR",
+                                            "amount":  "500"
+                                        }
+                          }
+             },
+    "comp":  {
+                 "networks":  [
+                                  "ERC20"
+                              ],
+                 "fees":  {
+                              "ERC20":  {
+                                            "coin":  "COMP",
+                                            "amount":  "0.08"
+                                        }
+                          }
+             },
+    "coti":  {
+                 "networks":  [
+                                  "ERC20"
+                              ],
+                 "fees":  {
+                              "ERC20":  {
+                                            "coin":  "COTI",
+                                            "amount":  "100"
+                                        }
+                          }
+             },
+    "crv":  {
+                "networks":  [
+                                 "ERC20"
+                             ],
+                "fees":  {
+                             "ERC20":  {
+                                           "coin":  "CRV",
+                                           "amount":  "5"
+                                       }
+                         }
+            },
+    "cvc":  {
+                "networks":  [
+                                 "ERC20"
+                             ],
+                "fees":  {
+                             "ERC20":  {
+                                           "coin":  "CVC",
+                                           "amount":  "45"
+                                       }
+                         }
+            },
+    "cvx":  {
+                "networks":  [
+                                 "ERC20"
+                             ],
+                "fees":  {
+                             "ERC20":  {
+                                           "coin":  "CVX",
+                                           "amount":  "1.2"
+                                       }
+                         }
+            },
+    "egld":  {
+                 "networks":  [
+                                  "MultiversX eGold"
+                              ],
+                 "fees":  {
+                              "MultiversX eGold":  {
+                                                       "coin":  "EGLD",
+                                                       "amount":  "0.001"
+                                                   }
+                          }
+             },
+    "eigen":  {
+                  "networks":  [
+                                   "ERC20"
+                               ],
+                  "fees":  {
+                               "ERC20":  {
+                                             "coin":  "EIGEN",
+                                             "amount":  "5"
+                                         }
+                           }
+              },
+    "fet":  {
+                "networks":  [
+                                 "ERC20"
+                             ],
+                "fees":  {
+                             "ERC20":  {
+                                           "coin":  "FET",
+                                           "amount":  "6"
+                                       }
+                         }
+            },
+    "fil":  {
+                "networks":  [
+                                 "Filecoin"
+                             ],
+                "fees":  {
+                             "Filecoin":  {
+                                              "coin":  "FIL",
+                                              "amount":  "0.001"
+                                          }
+                         }
+            },
+    "100k_floki":  {
+                       "networks":  [
+                                        "BEP20 (BSC)"
+                                    ],
+                       "fees":  {
+                                    "BEP20 (BSC)":  {
+                                                        "coin":  "100K_FLOKI",
+                                                        "amount":  "0.25"
+                                                    }
+                                }
+                   },
+    "flow":  {
+                 "networks":  [
+                                  "Flow"
+                              ],
+                 "fees":  {
+                              "Flow":  {
+                                           "coin":  "FLOW",
+                                           "amount":  "0.01"
+                                       }
+                          }
+             },
+    "g":  {
+              "networks":  [
+                               "ERC20"
+                           ],
+              "fees":  {
+                           "ERC20":  {
+                                         "coin":  "G",
+                                         "amount":  "1500"
+                                     }
+                       }
+          },
+    "egala":  {
+                  "networks":  [
+                                   "ERC20"
+                               ],
+                  "fees":  {
+                               "ERC20":  {
+                                             "coin":  "EGALA",
+                                             "amount":  "250"
+                                         }
+                           }
+              },
+    "pgala":  {
+                  "networks":  [
+                                   "BEP20 (BSC)"
+                               ],
+                  "fees":  {
+                               "BEP20 (BSC)":  {
+                                                   "coin":  "PGALA",
+                                                   "amount":  "30"
+                                               }
+                           }
+              },
+    "hbar":  {
+                 "networks":  [
+                                  "Hedera Hashgraph"
+                              ],
+                 "fees":  {
+                              "Hedera Hashgraph":  {
+                                                       "coin":  "HBAR",
+                                                       "amount":  "1"
+                                                   }
+                          }
+             },
+    "id":  {
+               "networks":  [
+                                "ERC20"
+                            ],
+               "fees":  {
+                            "ERC20":  {
+                                          "coin":  "ID",
+                                          "amount":  "30"
+                                      }
+                        }
+           },
+    "imx":  {
+                "networks":  [
+                                 "ERC20"
+                             ],
+                "fees":  {
+                             "ERC20":  {
+                                           "coin":  "IMX",
+                                           "amount":  "7"
+                                       }
+                         }
+            },
+    "knc":  {
+                "networks":  [
+                                 "ERC20"
+                             ],
+                "fees":  {
+                             "ERC20":  {
+                                           "coin":  "KNC",
+                                           "amount":  "9"
+                                       }
+                         }
+            },
+    "magic":  {
+                  "networks":  [
+                                   "Arbitrum one"
+                               ],
+                  "fees":  {
+                               "Arbitrum one":  {
+                                                    "coin":  "MAGIC",
+                                                    "amount":  "10"
+                                                }
+                           }
+              },
+    "major":  {
+                  "networks":  [
+                                   "TON (the open network)"
+                               ],
+                  "fees":  {
+                               "TON (the open network)":  {
+                                                              "coin":  "MAJOR",
+                                                              "amount":  "0.25"
+                                                          }
+                           }
+              },
+    "mask":  {
+                 "networks":  [
+                                  "ERC20"
+                              ],
+                 "fees":  {
+                              "ERC20":  {
+                                            "coin":  "MASK",
+                                            "amount":  "3"
+                                        }
+                          }
+             },
+    "pol":  {
+                "networks":  [
+                                 "Polygon"
+                             ],
+                "fees":  {
+                             "Polygon":  {
+                                             "coin":  "POL",
+                                             "amount":  "0.4"
+                                         }
+                         }
+            },
+    "mdt":  {
+                "networks":  [
+                                 "ERC20"
+                             ],
+                "fees":  {
+                             "ERC20":  {
+                                           "coin":  "MDT",
+                                           "amount":  "150"
+                                       }
+                         }
+            },
+    "meme":  {
+                 "networks":  [
+                                  "ERC20"
+                              ],
+                 "fees":  {
+                              "ERC20":  {
+                                            "coin":  "MEME",
+                                            "amount":  "1800"
+                                        }
+                          }
+             },
+    "near":  {
+                 "networks":  [
+                                  "NEAR Protocol"
+                              ],
+                 "fees":  {
+                              "NEAR Protocol":  {
+                                                    "coin":  "NEAR",
+                                                    "amount":  "0.01"
+                                                }
+                          }
+             },
+    "1m_nft":  {
+                   "networks":  [
+                                    "TRC20"
+                                ],
+                   "fees":  {
+                                "TRC20":  {
+                                              "coin":  "1M_NFT",
+                                              "amount":  "3"
+                                          }
+                            }
+               },
+    "nmr":  {
+                "networks":  [
+                                 "ERC20"
+                             ],
+                "fees":  {
+                             "ERC20":  {
+                                           "coin":  "NMR",
+                                           "amount":  "0.25"
+                                       }
+                         }
+            },
+    "not":  {
+                "networks":  [
+                                 "TON (the open network)"
+                             ],
+                "fees":  {
+                             "TON (the open network)":  {
+                                                            "coin":  "NOT",
+                                                            "amount":  "170"
+                                                        }
+                         }
+            },
+    "pendle":  {
+                   "networks":  [
+                                    "ERC20"
+                                ],
+                   "fees":  {
+                                "ERC20":  {
+                                              "coin":  "PENDLE",
+                                              "amount":  "1"
+                                          }
+                            }
+               },
+    "qnt":  {
+                "networks":  [
+                                 "ERC20"
+                             ],
+                "fees":  {
+                             "ERC20":  {
+                                           "coin":  "QNT",
+                                           "amount":  "0.03"
+                                       }
+                         }
+            },
+    "rdnt":  {
+                 "networks":  [
+                                  "Arbitrum one"
+                              ],
+                 "fees":  {
+                              "Arbitrum one":  {
+                                                   "coin":  "RDNT",
+                                                   "amount":  "60"
+                                               }
+                          }
+             },
+    "render":  {
+                   "networks":  [
+                                    "Solana"
+                                ],
+                   "fees":  {
+                                "Solana":  {
+                                               "coin":  "RENDER",
+                                               "amount":  "0.6"
+                                           }
+                            }
+               },
+    "rsr":  {
+                "networks":  [
+                                 "ERC20"
+                             ],
+                "fees":  {
+                             "ERC20":  {
+                                           "coin":  "RSR",
+                                           "amount":  "900"
+                                       }
+                         }
+            },
+    "skl":  {
+                "networks":  [
+                                 "ERC20"
+                             ],
+                "fees":  {
+                             "ERC20":  {
+                                           "coin":  "SKL",
+                                           "amount":  "800"
+                                       }
+                         }
+            },
+    "slp":  {
+                "networks":  [
+                                 "ERC20"
+                             ],
+                "fees":  {
+                             "ERC20":  {
+                                           "coin":  "SLP",
+                                           "amount":  "2250"
+                                       }
+                         }
+            },
+    "snt":  {
+                "networks":  [
+                                 "ERC20"
+                             ],
+                "fees":  {
+                             "ERC20":  {
+                                           "coin":  "SNT",
+                                           "amount":  "110"
+                                       }
+                         }
+            },
+    "snx":  {
+                "networks":  [
+                                 "ERC20"
+                             ],
+                "fees":  {
+                             "ERC20":  {
+                                           "coin":  "SNX",
+                                           "amount":  "5"
+                                       }
+                         }
+            },
+    "s":  {
+              "networks":  [
+                               "Sonic"
+                           ],
+              "fees":  {
+                           "Sonic":  {
+                                         "coin":  "S",
+                                         "amount":  "0.3"
+                                     }
+                       }
+          },
+    "sol":  {
+                "networks":  [
+                                 "Solana"
+                             ],
+                "fees":  {
+                             "Solana":  {
+                                            "coin":  "SOL",
+                                            "amount":  "0.01"
+                                        }
+                         }
+            },
+    "ssv":  {
+                "networks":  [
+                                 "ERC20"
+                             ],
+                "fees":  {
+                             "ERC20":  {
+                                           "coin":  "SSV",
+                                           "amount":  "0.4"
+                                       }
+                         }
+            },
+    "storj":  {
+                  "networks":  [
+                                   "ERC20"
+                               ],
+                  "fees":  {
+                               "ERC20":  {
+                                             "coin":  "STORJ",
+                                             "amount":  "15"
+                                         }
+                           }
+              },
+    "super":  {
+                  "networks":  [
+                                   "ERC20"
+                               ],
+                  "fees":  {
+                               "ERC20":  {
+                                             "coin":  "SUPER",
+                                             "amount":  "10"
+                                         }
+                           }
+              },
+    "sushi":  {
+                  "networks":  [
+                                   "ERC20"
+                               ],
+                  "fees":  {
+                               "ERC20":  {
+                                             "coin":  "SUSHI",
+                                             "amount":  "5"
+                                         }
+                           }
+              },
+    "t":  {
+              "networks":  [
+                               "ERC20"
+                           ],
+              "fees":  {
+                           "ERC20":  {
+                                         "coin":  "T",
+                                         "amount":  "235"
+                                     }
+                       }
+          },
+    "ton":  {
+                "networks":  [
+                                 "TON (the open network)"
+                             ],
+                "fees":  {
+                             "TON (the open network)":  {
+                                                            "coin":  "TON",
+                                                            "amount":  "0.1"
+                                                        }
+                         }
+            },
+    "trb":  {
+                "networks":  [
+                                 "ERC20"
+                             ],
+                "fees":  {
+                             "ERC20":  {
+                                           "coin":  "TRB",
+                                           "amount":  "0.125"
+                                       }
+                         }
+            },
+    "uma":  {
+                "networks":  [
+                                 "ERC20"
+                             ],
+                "fees":  {
+                             "ERC20":  {
+                                           "coin":  "UMA",
+                                           "amount":  "3"
+                                       }
+                         }
+            },
+    "vine":  {
+                 "networks":  [
+                                  "Solana"
+                              ],
+                 "fees":  {
+                              "Solana":  {
+                                             "coin":  "VINE",
+                                             "amount":  "25"
+                                         }
+                          }
+             },
+    "act":  {
+                "networks":  [
+                                 "Solana"
+                             ],
+                "fees":  {
+                             "Solana":  {
+                                            "coin":  "ACT",
+                                            "amount":  "30"
+                                        }
+                         }
+            },
+    "goat":  {
+                 "networks":  [
+                                  "Solana"
+                              ],
+                 "fees":  {
+                              "Solana":  {
+                                             "coin":  "GOAT",
+                                             "amount":  "25"
+                                         }
+                          }
+             },
+    "bigtime":  {
+                    "networks":  [
+                                     "ERC20"
+                                 ],
+                    "fees":  {
+                                 "ERC20":  {
+                                               "coin":  "BIGTIME",
+                                               "amount":  "70"
+                                           }
+                             }
+                },
+    "anime":  {
+                  "networks":  [
+                                   "Arbitrum one"
+                               ],
+                  "fees":  {
+                               "Arbitrum one":  {
+                                                    "coin":  "ANIME",
+                                                    "amount":  "200"
+                                                }
+                           }
+              },
+    "stg":  {
+                "networks":  [
+                                 "ERC20"
+                             ],
+                "fees":  {
+                             "ERC20":  {
+                                           "coin":  "STG",
+                                           "amount":  "19"
+                                       }
+                         }
+            },
+    "cow":  {
+                "networks":  [
+                                 "ERC20"
+                             ],
+                "fees":  {
+                             "ERC20":  {
+                                           "coin":  "COW",
+                                           "amount":  "9.5"
+                                       }
+                         }
+            },
+    "people":  {
+                   "networks":  [
+                                    "ERC20"
+                                ],
+                   "fees":  {
+                                "ERC20":  {
+                                              "coin":  "PEOPLE",
+                                              "amount":  "220"
+                                          }
+                            }
+               },
+    "powr":  {
+                 "networks":  [
+                                  "ERC20"
+                              ],
+                 "fees":  {
+                              "ERC20":  {
+                                            "coin":  "POWR",
+                                            "amount":  "25"
+                                        }
+                          }
+             },
+    "ach":  {
+                "networks":  [
+                                 "ERC20"
+                             ],
+                "fees":  {
+                             "ERC20":  {
+                                           "coin":  "ACH",
+                                           "amount":  "260"
+                                       }
+                         }
+            },
+    "xai":  {
+                "networks":  [
+                                 "Arbitrum one"
+                             ],
+                "fees":  {
+                             "Arbitrum one":  {
+                                                  "coin":  "XAI",
+                                                  "amount":  "60"
+                                              }
+                         }
+            },
+    "woo":  {
+                "networks":  [
+                                 "ERC20"
+                             ],
+                "fees":  {
+                             "ERC20":  {
+                                           "coin":  "WOO",
+                                           "amount":  "70"
+                                       }
+                         }
+            },
+    "xtz":  {
+                "networks":  [
+                                 "Tezos"
+                             ],
+                "fees":  {
+                             "Tezos":  {
+                                           "coin":  "XTZ",
+                                           "amount":  "0.2"
+                                       }
+                         }
+            },
+    "yfi":  {
+                "networks":  [
+                                 "ERC20"
+                             ],
+                "fees":  {
+                             "ERC20":  {
+                                           "coin":  "YFI",
+                                           "amount":  "0.0007"
+                                       }
+                         }
+            },
+    "ygg":  {
+                "networks":  [
+                                 "ERC20"
+                             ],
+                "fees":  {
+                             "ERC20":  {
+                                           "coin":  "YGG",
+                                           "amount":  "25"
+                                       }
+                         }
+            },
+    "wld":  {
+                "networks":  [
+                                 "ERC20"
+                             ],
+                "fees":  {
+                             "ERC20":  {
+                                           "coin":  "WLD",
+                                           "amount":  "2.5"
+                                       }
+                         }
+            },
+    "zil":  {
+                "networks":  [
+                                 "BEP20 (BSC)"
+                             ],
+                "fees":  {
+                             "BEP20 (BSC)":  {
+                                                 "coin":  "ZIL",
+                                                 "amount":  "1000"
+                                             }
+                         }
+            },
+    "zro":  {
+                "networks":  [
+                                 "ERC20"
+                             ],
+                "fees":  {
+                             "ERC20":  {
+                                           "coin":  "ZRO",
+                                           "amount":  "1.7"
+                                       }
+                         }
+            },
+    "zrx":  {
+                "networks":  [
+                                 "ERC20"
+                             ],
+                "fees":  {
+                             "ERC20":  {
+                                           "coin":  "ZRX",
+                                           "amount":  "14"
+                                       }
+                         }
+            },
+    "mana":  {
+                 "networks":  [
+                                  "ERC20"
+                              ],
+                 "fees":  {
+                              "ERC20":  {
+                                            "coin":  "MANA",
+                                            "amount":  "12"
+                                        }
+                          }
+             },
+    "move":  {
+                 "networks":  [
+                                  "ERC20"
+                              ],
+                 "fees":  {
+                              "ERC20":  {
+                                            "coin":  "MOVE",
+                                            "amount":  "35"
+                                        }
+                          }
+             },
+    "safe":  {
+                 "networks":  [
+                                  "ERC20"
+                              ],
+                 "fees":  {
+                              "ERC20":  {
+                                            "coin":  "SAFE",
+                                            "amount":  "20"
+                                        }
+                          }
+             },
+    "sand":  {
+                 "networks":  [
+                                  "ERC20"
+                              ],
+                 "fees":  {
+                              "ERC20":  {
+                                            "coin":  "SAND",
+                                            "amount":  "14"
+                                        }
+                          }
+             },
+    "ape":  {
+                "networks":  [
+                                 "ERC20"
+                             ],
+                "fees":  {
+                             "ERC20":  {
+                                           "coin":  "APE",
+                                           "amount":  "6"
+                                       }
+                         }
+            },
+    "omg":  {
+                "networks":  [
+                                 "ERC20"
+                             ],
+                "fees":  {
+                             "ERC20":  {
+                                           "coin":  "OMG",
+                                           "amount":  "29"
+                                       }
+                         }
+            },
+    "ondo":  {
+                 "networks":  [
+                                  "ERC20"
+                              ],
+                 "fees":  {
+                              "ERC20":  {
+                                            "coin":  "ONDO",
+                                            "amount":  "4"
+                                        }
+                          }
+             },
+    "one":  {
+                "networks":  [
+                                 "Harmony"
+                             ],
+                "fees":  {
+                             "Harmony":  {
+                                             "coin":  "ONE",
+                                             "amount":  "10"
+                                         }
+                         }
+            },
+    "w":  {
+              "networks":  [
+                               "Solana"
+                           ],
+              "fees":  {
+                           "Solana":  {
+                                          "coin":  "W",
+                                          "amount":  "30"
+                                      }
+                       }
+          },
+    "wbtc":  {
+                 "networks":  [
+                                  "ERC20"
+                              ],
+                 "fees":  {
+                              "ERC20":  {
+                                            "coin":  "WBTC",
+                                            "amount":  "0.000025"
+                                        }
+                          }
+             },
+    "chz":  {
+                "networks":  [
+                                 "ERC20"
+                             ],
+                "fees":  {
+                             "ERC20":  {
+                                           "coin":  "CHZ",
+                                           "amount":  "45"
+                                       }
+                         }
+            },
+    "strk":  {
+                 "networks":  [
+                                  "ERC20"
+                              ],
+                 "fees":  {
+                              "ERC20":  {
+                                            "coin":  "STRK",
+                                            "amount":  "70"
+                                        }
+                          }
+             },
+    "turbo":  {
+                  "networks":  [
+                                   "ERC20"
+                               ],
+                  "fees":  {
+                               "ERC20":  {
+                                             "coin":  "TURBO",
+                                             "amount":  "1000"
+                                         }
+                           }
+              },
+    "dexe":  {
+                 "networks":  [
+                                  "ERC20"
+                              ],
+                 "fees":  {
+                              "ERC20":  {
+                                            "coin":  "DEXE",
+                                            "amount":  "0.5"
+                                        }
+                          }
+             },
+    "ath":  {
+                "networks":  [
+                                 "ERC20"
+                             ],
+                "fees":  {
+                             "ERC20":  {
+                                           "coin":  "ATH",
+                                           "amount":  "130"
+                                       }
+                         }
+            },
+    "cookie":  {
+                   "networks":  [
+                                    "BEP20 (BSC)"
+                                ],
+                   "fees":  {
+                                "BEP20 (BSC)":  {
+                                                    "coin":  "COOKIE",
+                                                    "amount":  "2"
+                                                }
+                            }
+               },
+    "cgpt":  {
+                 "networks":  [
+                                  "BEP20 (BSC)"
+                              ],
+                 "fees":  {
+                              "BEP20 (BSC)":  {
+                                                  "coin":  "CGPT",
+                                                  "amount":  "11"
+                                              }
+                          }
+             },
+    "neiro":  {
+                  "networks":  [
+                                   "ERC20"
+                               ],
+                  "fees":  {
+                               "ERC20":  {
+                                             "coin":  "NEIRO",
+                                             "amount":  "23000"
+                                         }
+                           }
+              },
+    "1k_bonk":  {
+                    "networks":  [
+                                     "Solana"
+                                 ],
+                    "fees":  {
+                                 "Solana":  {
+                                                "coin":  "1K_BONK",
+                                                "amount":  "130"
+                                            }
+                             }
+                },
+    "morpho":  {
+                   "networks":  [
+                                    "ERC20"
+                                ],
+                   "fees":  {
+                                "ERC20":  {
+                                              "coin":  "MORPHO",
+                                              "amount":  "2"
+                                          }
+                            }
+               },
+    "1k_cat":  {
+                   "networks":  [
+                                    "BEP20 (BSC)"
+                                ],
+                   "fees":  {
+                                "BEP20 (BSC)":  {
+                                                    "coin":  "1K_CAT",
+                                                    "amount":  "200"
+                                                }
+                            }
+               },
+    "form":  {
+                 "networks":  [
+                                  "BEP20 (BSC)"
+                              ],
+                 "fees":  {
+                              "BEP20 (BSC)":  {
+                                                  "coin":  "FORM",
+                                                  "amount":  "0.4"
+                                              }
+                          }
+             },
+    "pha":  {
+                "networks":  [
+                                 "ERC20"
+                             ],
+                "fees":  {
+                             "ERC20":  {
+                                           "coin":  "PHA",
+                                           "amount":  "35"
+                                       }
+                         }
+            },
+    "waxp":  {
+                 "networks":  [
+                                  "ERC20"
+                              ],
+                 "fees":  {
+                              "ERC20":  {
+                                            "coin":  "WAXP",
+                                            "amount":  "200"
+                                        }
+                          }
+             },
+    "twt":  {
+                "networks":  [
+                                 "BEP20 (BSC)"
+                             ],
+                "fees":  {
+                             "BEP20 (BSC)":  {
+                                                 "coin":  "TWT",
+                                                 "amount":  "1.15"
+                                             }
+                         }
+            },
+    "zent":  {
+                 "networks":  [
+                                  "ERC20"
+                              ],
+                 "fees":  {
+                              "ERC20":  {
+                                            "coin":  "ZENT",
+                                            "amount":  "465"
+                                        }
+                          }
+             },
+    "rpl":  {
+                "networks":  [
+                                 "ERC20"
+                             ],
+                "fees":  {
+                             "ERC20":  {
+                                           "coin":  "RPL",
+                                           "amount":  "0.5"
+                                       }
+                         }
+            },
+    "ilv":  {
+                "networks":  [
+                                 "ERC20"
+                             ],
+                "fees":  {
+                             "ERC20":  {
+                                           "coin":  "ILV",
+                                           "amount":  "0.25"
+                                       }
+                         }
+            },
+    "orbs":  {
+                 "networks":  [
+                                  "ERC20"
+                              ],
+                 "fees":  {
+                              "ERC20":  {
+                                            "coin":  "ORBS",
+                                            "amount":  "200"
+                                        }
+                          }
+             },
+    "sfp":  {
+                "networks":  [
+                                 "BEP20 (BSC)"
+                             ],
+                "fees":  {
+                             "BEP20 (BSC)":  {
+                                                 "coin":  "SFP",
+                                                 "amount":  "3"
+                                             }
+                         }
+            },
+    "wif":  {
+                "networks":  [
+                                 "Solana"
+                             ],
+                "fees":  {
+                             "Solana":  {
+                                            "coin":  "WIF",
+                                            "amount":  "4"
+                                        }
+                         }
+            },
+    "ray":  {
+                "networks":  [
+                                 "Solana"
+                             ],
+                "fees":  {
+                             "Solana":  {
+                                            "coin":  "RAY",
+                                            "amount":  "1.5"
+                                        }
+                         }
+            },
+    "tnsr":  {
+                 "networks":  [
+                                  "Solana"
+                              ],
+                 "fees":  {
+                              "Solana":  {
+                                             "coin":  "TNSR",
+                                             "amount":  "20"
+                                         }
+                          }
+             },
+    "aixbt":  {
+                  "networks":  [
+                                   "BASE"
+                               ],
+                  "fees":  {
+                               "BASE":  {
+                                            "coin":  "AIXBT",
+                                            "amount":  "10"
+                                        }
+                           }
+              },
+    "virtual":  {
+                    "networks":  [
+                                     "BASE"
+                                 ],
+                    "fees":  {
+                                 "BASE":  {
+                                              "coin":  "VIRTUAL",
+                                              "amount":  "0.45"
+                                          }
+                             }
+                },
+    "kaito":  {
+                  "networks":  [
+                                   "BASE"
+                               ],
+                  "fees":  {
+                               "BASE":  {
+                                            "coin":  "KAITO",
+                                            "amount":  "0.6"
+                                        }
+                           }
+              },
+    "pengu":  {
+                  "networks":  [
+                                   "Solana"
+                               ],
+                  "fees":  {
+                               "Solana":  {
+                                              "coin":  "PENGU",
+                                              "amount":  "120"
+                                          }
+                           }
+              },
+    "jup":  {
+                "networks":  [
+                                 "Solana"
+                             ],
+                "fees":  {
+                             "Solana":  {
+                                            "coin":  "JUP",
+                                            "amount":  "5"
+                                        }
+                         }
+            },
+    "io":  {
+               "networks":  [
+                                "Solana"
+                            ],
+               "fees":  {
+                            "Solana":  {
+                                           "coin":  "IO",
+                                           "amount":  "7.5"
+                                       }
+                        }
+           },
+    "pump":  {
+                 "networks":  [
+                                  "Solana"
+                              ],
+                 "fees":  {
+                              "Solana":  {
+                                             "coin":  "PUMP",
+                                             "amount":  "430"
+                                         }
+                          }
+             },
+    "layer":  {
+                  "networks":  [
+                                   "Solana"
+                               ],
+                  "fees":  {
+                               "Solana":  {
+                                              "coin":  "LAYER",
+                                              "amount":  "9"
+                                          }
+                           }
+              },
+    "pnut":  {
+                 "networks":  [
+                                  "Solana"
+                              ],
+                 "fees":  {
+                              "Solana":  {
+                                             "coin":  "PNUT",
+                                             "amount":  "16"
+                                         }
+                          }
+             },
+    "orca":  {
+                 "networks":  [
+                                  "Solana"
+                              ],
+                 "fees":  {
+                              "Solana":  {
+                                             "coin":  "ORCA",
+                                             "amount":  "1"
+                                         }
+                          }
+             },
+    "syrup":  {
+                  "networks":  [
+                                   "BASE",
+                                   "ERC20"
+                               ],
+                  "fees":  {
+                               "BASE":  {
+                                            "coin":  "SYRUP",
+                                            "amount":  "2"
+                                        },
+                               "ERC20":  {
+                                             "coin":  "SYRUP",
+                                             "amount":  "6.5"
+                                         }
+                           }
+              },
+    "sahara":  {
+                   "networks":  [
+                                    "ERC20"
+                                ],
+                   "fees":  {
+                                "ERC20":  {
+                                              "coin":  "SAHARA",
+                                              "amount":  "40"
+                                          }
+                            }
+               },
+    "bome":  {
+                 "networks":  [
+                                  "Solana"
+                              ],
+                 "fees":  {
+                              "Solana":  {
+                                             "coin":  "BOME",
+                                             "amount":  "1400"
+                                         }
+                          }
+             },
+    "pyth":  {
+                 "networks":  [
+                                  "Solana"
+                              ],
+                 "fees":  {
+                              "Solana":  {
+                                             "coin":  "PYTH",
+                                             "amount":  "18"
+                                         }
+                          }
+             },
+    "jto":  {
+                "networks":  [
+                                 "Solana"
+                             ],
+                "fees":  {
+                             "Solana":  {
+                                            "coin":  "JTO",
+                                            "amount":  "3"
+                                        }
+                         }
+            },
+    "sky":  {
+                "networks":  [
+                                 "ERC20"
+                             ],
+                "fees":  {
+                             "ERC20":  {
+                                           "coin":  "SKY",
+                                           "amount":  "35"
+                                       }
+                         }
+            },
+    "sui":  {
+                "networks":  [
+                                 "Sui"
+                             ],
+                "fees":  {
+                             "Sui":  {
+                                         "coin":  "SUI",
+                                         "amount":  "0.1"
+                                     }
+                         }
+            },
+    "bio":  {
+                "networks":  [
+                                 "ERC20"
+                             ],
+                "fees":  {
+                             "ERC20":  {
+                                           "coin":  "BIO",
+                                           "amount":  "20"
+                                       }
+                         }
+            },
+    "mew":  {
+                "networks":  [
+                                 "Solana"
+                             ],
+                "fees":  {
+                             "Solana":  {
+                                            "coin":  "MEW",
+                                            "amount":  "930"
+                                        }
+                         }
+            },
+    "sun":  {
+                "networks":  [
+                                 "TRC20"
+                             ],
+                "fees":  {
+                             "TRC20":  {
+                                           "coin":  "SUN",
+                                           "amount":  "100"
+                                       }
+                         }
+            },
+    "me":  {
+               "networks":  [
+                                "Solana"
+                            ],
+               "fees":  {
+                            "Solana":  {
+                                           "coin":  "ME",
+                                           "amount":  "6"
+                                       }
+                        }
+           },
+    "kmno":  {
+                 "networks":  [
+                                  "Solana"
+                              ],
+                 "fees":  {
+                              "Solana":  {
+                                             "coin":  "KMNO",
+                                             "amount":  "27"
+                                         }
+                          }
+             },
+    "linea":  {
+                  "networks":  [
+                                   "LINEA"
+                               ],
+                  "fees":  {
+                               "LINEA":  {
+                                             "coin":  "LINEA",
+                                             "amount":  "300"
+                                         }
+                           }
+              },
+    "avnt":  {
+                 "networks":  [
+                                  "BASE"
+                              ],
+                 "fees":  {
+                              "BASE":  {
+                                           "coin":  "AVNT",
+                                           "amount":  "1"
+                                       }
+                          }
+             },
+    "bard":  {
+                 "networks":  [
+                                  "ERC20"
+                              ],
+                 "fees":  {
+                              "ERC20":  {
+                                            "coin":  "BARD",
+                                            "amount":  "2.5"
+                                        }
+                          }
+             },
+    "zkc":  {
+                "networks":  [
+                                 "ERC20"
+                             ],
+                "fees":  {
+                             "ERC20":  {
+                                           "coin":  "ZKC",
+                                           "amount":  "18"
+                                       }
+                         }
+            },
+    "aster":  {
+                  "networks":  [
+                                   "BEP20 (BSC)"
+                               ],
+                  "fees":  {
+                               "BEP20 (BSC)":  {
+                                                   "coin":  "ASTER",
+                                                   "amount":  "0.5"
+                                               }
+                           }
+              },
+    "spk":  {
+                "networks":  [
+                                 "ERC20"
+                             ],
+                "fees":  {
+                             "ERC20":  {
+                                           "coin":  "SPK",
+                                           "amount":  "92"
+                                       }
+                         }
+            },
+    "sign":  {
+                 "networks":  [
+                                  "BASE"
+                              ],
+                 "fees":  {
+                              "BASE":  {
+                                           "coin":  "SIGN",
+                                           "amount":  "9.7"
+                                       }
+                          }
+             },
+    "pixel":  {
+                  "networks":  [
+                                   "ERC20"
+                               ],
+                  "fees":  {
+                               "ERC20":  {
+                                             "coin":  "PIXEL",
+                                             "amount":  "173"
+                                         }
+                           }
+              },
+    "lqty":  {
+                 "networks":  [
+                                  "ERC20"
+                              ],
+                 "fees":  {
+                              "ERC20":  {
+                                            "coin":  "LQTY",
+                                            "amount":  "5.5"
+                                        }
+                          }
+             },
+    "kernel":  {
+                   "networks":  [
+                                    "ERC20"
+                                ],
+                   "fees":  {
+                                "ERC20":  {
+                                              "coin":  "KERNEL",
+                                              "amount":  "30"
+                                          }
+                            }
+               },
+    "rlc":  {
+                "networks":  [
+                                 "ERC20"
+                             ],
+                "fees":  {
+                             "ERC20":  {
+                                           "coin":  "RLC",
+                                           "amount":  "3.14"
+                                       }
+                         }
+            },
+    "degen":  {
+                  "networks":  [
+                                   "BASE"
+                               ],
+                  "fees":  {
+                               "BASE":  {
+                                            "coin":  "DEGEN",
+                                            "amount":  "323"
+                                        }
+                           }
+              },
+    "xvs":  {
+                "networks":  [
+                                 "BEP20 (BSC)"
+                             ],
+                "fees":  {
+                             "BEP20 (BSC)":  {
+                                                 "coin":  "XVS",
+                                                 "amount":  "0.2"
+                                             }
+                         }
+            },
+    "acx":  {
+                "networks":  [
+                                 "ERC20"
+                             ],
+                "fees":  {
+                             "ERC20":  {
+                                           "coin":  "ACX",
+                                           "amount":  "41"
+                                       }
+                         }
+            },
+    "op":  {
+               "networks":  [
+                                "Optimism"
+                            ],
+               "fees":  {
+                            "Optimism":  {
+                                             "coin":  "OP",
+                                             "amount":  "2.3"
+                                         }
+                        }
+           },
+    "sei":  {
+                "networks":  [
+                                 "SEI"
+                             ],
+                "fees":  {
+                             "SEI":  {
+                                         "coin":  "SEI",
+                                         "amount":  "1"
+                                     }
+                         }
+            },
+    "usde":  {
+                 "networks":  [
+                                  "ERC20"
+                              ],
+                 "fees":  {
+                              "ERC20":  {
+                                            "coin":  "USDE",
+                                            "amount":  "1"
+                                        }
+                          }
+             },
+    "2z":  {
+               "networks":  [
+                                "Solana"
+                            ],
+               "fees":  {
+                            "Solana":  {
+                                           "coin":  "2Z",
+                                           "amount":  "8.5"
+                                       }
+                        }
+           },
+    "aero":  {
+                 "networks":  [
+                                  "BASE"
+                              ],
+                 "fees":  {
+                              "BASE":  {
+                                           "coin":  "AERO",
+                                           "amount":  "0.9"
+                                       }
+                          }
+             },
+    "beamx":  {
+                  "networks":  [
+                                   "ERC20"
+                               ],
+                  "fees":  {
+                               "ERC20":  {
+                                             "coin":  "BEAMX",
+                                             "amount":  "740"
+                                         }
+                           }
+              },
+    "toshi":  {
+                  "networks":  [
+                                   "BASE"
+                               ],
+                  "fees":  {
+                               "BASE":  {
+                                            "coin":  "TOSHI",
+                                            "amount":  "2000"
+                                        }
+                           }
+              },
+    "moodeng":  {
+                    "networks":  [
+                                     "Solana"
+                                 ],
+                    "fees":  {
+                                 "Solana":  {
+                                                "coin":  "MOODENG",
+                                                "amount":  "14"
+                                            }
+                             }
+                },
+    "ctc":  {
+                "networks":  [
+                                 "ERC20"
+                             ],
+                "fees":  {
+                             "ERC20":  {
+                                           "coin":  "CTC",
+                                           "amount":  "25"
+                                       }
+                         }
+            },
+    "met":  {
+                "networks":  [
+                                 "Solana"
+                             ],
+                "fees":  {
+                             "Solana":  {
+                                            "coin":  "MET",
+                                            "amount":  "4"
+                                        }
+                         }
+            },
+    "giggle":  {
+                   "networks":  [
+                                    "BEP20 (BSC)"
+                                ],
+                   "fees":  {
+                                "BEP20 (BSC)":  {
+                                                    "coin":  "GIGGLE",
+                                                    "amount":  "0.015"
+                                                }
+                            }
+               },
+    "prove":  {
+                  "networks":  [
+                                   "ERC20"
+                               ],
+                  "fees":  {
+                               "ERC20":  {
+                                             "coin":  "PROVE",
+                                             "amount":  "2.5"
+                                         }
+                           }
+              },
+    "zora":  {
+                 "networks":  [
+                                  "BASE"
+                              ],
+                 "fees":  {
+                              "BASE":  {
+                                           "coin":  "ZORA",
+                                           "amount":  "16.7"
+                                       }
+                          }
+             },
+    "prom":  {
+                 "networks":  [
+                                  "ERC20"
+                              ],
+                 "fees":  {
+                              "ERC20":  {
+                                            "coin":  "PROM",
+                                            "amount":  "0.7"
+                                        }
+                          }
+             },
+    "zen":  {
+                "networks":  [
+                                 "BASE"
+                             ],
+                "fees":  {
+                             "BASE":  {
+                                          "coin":  "ZEN",
+                                          "amount":  "0.11"
+                                      }
+                         }
+            },
+    "wal":  {
+                "networks":  [
+                                 "SUI"
+                             ],
+                "fees":  {
+                             "SUI":  {
+                                         "coin":  "WAL",
+                                         "amount":  "1.3"
+                                     }
+                         }
+            },
+    "eul":  {
+                "networks":  [
+                                 "ERC20"
+                             ],
+                "fees":  {
+                             "ERC20":  {
+                                           "coin":  "EUL",
+                                           "amount":  "0.6"
+                                       }
+                         }
+            },
+    "mmt":  {
+                "networks":  [
+                                 "SUI"
+                             ],
+                "fees":  {
+                             "SUI":  {
+                                         "coin":  "MMT",
+                                         "amount":  "6.1"
+                                     }
+                         }
+            },
+    "kite":  {
+                 "networks":  [
+                                  "ERC20"
+                              ],
+                 "fees":  {
+                              "ERC20":  {
+                                            "coin":  "KITE",
+                                            "amount":  "21"
+                                        }
+                          }
+             },
+    "wet":  {
+                "networks":  [
+                                 "Solana"
+                             ],
+                "fees":  {
+                             "Solana":  {
+                                            "coin":  "WET",
+                                            "amount":  "7"
+                                        }
+                         }
+            },
+    "dood":  {
+                 "networks":  [
+                                  "Solana"
+                              ],
+                 "fees":  {
+                              "Solana":  {
+                                             "coin":  "DOOD",
+                                             "amount":  "370"
+                                         }
+                          }
+             },
+    "red":  {
+                "networks":  [
+                                 "ERC20"
+                             ],
+                "fees":  {
+                             "ERC20":  {
+                                           "coin":  "RED",
+                                           "amount":  "10"
+                                       }
+                         }
+            },
+    "fluid":  {
+                  "networks":  [
+                                   "ERC20"
+                               ],
+                  "fees":  {
+                               "ERC20":  {
+                                             "coin":  "FLUID",
+                                             "amount":  "1.9"
+                                         }
+                           }
+              },
+    "la":  {
+               "networks":  [
+                                "ERC20"
+                            ],
+               "fees":  {
+                            "ERC20":  {
+                                          "coin":  "LA",
+                                          "amount":  "7"
+                                      }
+                        }
+           },
+    "at":  {
+               "networks":  [
+                                "BEP20 (BSC)"
+                            ],
+               "fees":  {
+                            "BEP20 (BSC)":  {
+                                                "coin":  "AT",
+                                                "amount":  "7"
+                                            }
+                        }
+           },
+    "hype":  {
+                 "networks":  [
+                                  "Hyperliquid HyperEVM"
+                              ],
+                 "fees":  {
+                              "Hyperliquid HyperEVM":  {
+                                                           "coin":  "HYPE",
+                                                           "amount":  "0.04"
+                                                       }
+                          }
+             },
+    "lit":  {
+                "networks":  [
+                                 "ERC20"
+                             ],
+                "fees":  {
+                             "ERC20":  {
+                                           "coin":  "LIT",
+                                           "amount":  "1"
+                                       }
+                         }
+            },
+    "brev":  {
+                 "networks":  [
+                                  "ERC20"
+                              ],
+                 "fees":  {
+                              "ERC20":  {
+                                            "coin":  "BREV",
+                                            "amount":  "5"
+                                        }
+                          }
+             }
+}

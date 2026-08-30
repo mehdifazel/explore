@@ -1,0 +1,16 @@
+{
+  "name": "crypto",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "http-server . -p 8080 -c-1",
+    "test": "node tests/setup-logic.test.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}

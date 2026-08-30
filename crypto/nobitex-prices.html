@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Prices - Nobitex</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Live Prices</h1>
+  <p class="subtitle">Market: Nobitex · Updates every <span id="updateIntervalSec">5</span> seconds</p>
+
+  <div class="main-wrap">
+    <div id="orderbookTooltip" class="orderbook-tooltip" style="display:none"></div>
+    <aside id="orderbookPanel" class="orderbook-panel">
+      <div class="orderbook-header">
+        <h2 id="orderbookTitle">Market Depth</h2>
+        <button class="orderbook-close" id="orderbookClose">&times;</button>
+      </div>
+      <div id="orderbookLoading" class="orderbook-loading">Loading...</div>
+      <div id="orderbookBody" class="orderbook-body" style="display:none">
+        <table class="orderbook-table">
+          <thead><tr><th>Price</th><th>Amount</th><th>Total</th></tr></thead>
+          <tbody id="orderbookAsksBody"></tbody>
+        </table>
+        <div id="orderbookPriceLine" class="orderbook-price-line">-</div>
+        <table class="orderbook-table">
+          <thead><tr><th>Price</th><th>Amount</th><th>Total</th></tr></thead>
+          <tbody id="orderbookBidsBody"></tbody>
+        </table>
+      </div>
+    </aside>
+
+    <div class="main-content">
+      <div class="stats-bar">
+        <div class="stat usdt-rial">
+          <strong>USDT/RLS</strong><br>
+          <span style="color:#00ff88">Buy:</span> <span id="usdtBuy">-</span>
+          <span style="color:#ff4466">Sell:</span> <span id="usdtSell">-</span>
+        </div>
+        <div class="stat usdt-mt-input">
+          <strong>Setup Value</strong><br>
+          <span class="mt-inline"><input type="text" id="usdtAvgMTInput" class="mt-input" value="100" inputmode="decimal" title="Million Toman (1 MT = 1e6 Toman = 1e7 RLS)"> <strong>MT</strong> <button type="button" id="setupRefreshBtn" class="setup-refresh-btn" title="Refresh with new value">↻</button></span>
+        </div>
+        <div class="stat usdt-avg-100mt">
+          <strong>Avg buy (<span id="usdtAvgBuyMTLabel">100</span> MT)</strong><br>
+          <span id="usdtAvgBuy100MT">-</span> <span class="stat-unit">RLS</span>
+        </div>
+        <div class="stat usdt-avg-100mt">
+          <strong>Avg sell (<span id="usdtAvgSellMTLabel">100</span> MT)</strong><br>
+          <span id="usdtAvgSell100MT">-</span> <span class="stat-unit">RLS</span>
+        </div>
+        <div class="stat">Last Update: <span id="lastUpdate">-</span></div>
+        <div class="stat">Markets: <span id="marketCount">0</span></div>
+        <div class="stat"><span class="live">●</span> Live</div>
+      </div>
+
+      <div class="tabs">
+        <button class="tab active" data-filter="rls">RLS Market</button>
+        <button class="tab" data-filter="usdt">USDT Market</button>
+        <select id="networkFilter" class="network-filter" title="Filter by withdraw network">
+          <option value="">All networks</option>
+        </select>
+      </div>
+
+      <div id="connectionWarning" class="connection-warning">Connection error – retrying...</div>
+      <div id="error" class="error" style="display:none"></div>
+      <div id="loading" class="loading">Loading...</div>
+
+      <table id="priceTable" style="display:none">
+        <thead>
+          <tr id="priceTableHeadRow">
+            <th>Market</th><th>Buy</th><th>Sell</th><th>Last</th><th>24h</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="js/shared/utils.js"></script>
+  <script src="js/shared/tv-api.js"></script>
+  <script src="js/shared/network-db.js"></script>
+  <script src="js/nobitex/config.js"></script>
+  <script src="js/nobitex/api.js"></script>
+  <script src="js/nobitex/app.js"></script>
+  <script>
+  // Fallback: if app.js fails or API never responds, stop showing Loading after 12s
+  (function(){
+    var t = setTimeout(function(){
+      var loading = document.getElementById('loading');
+      var table = document.getElementById('priceTable');
+      var err = document.getElementById('error');
+      if (loading && table && loading.style.display !== 'none' && table.style.display === 'none') {
+        loading.style.display = 'none';
+        table.style.display = 'table';
+        if (err) {
+          err.textContent = 'Connection failed. Check internet or VPN.';
+          err.style.display = 'block';
+        }
+      }
+    }, 12000);
+  })();
+  </script>
+</body>
+</html>

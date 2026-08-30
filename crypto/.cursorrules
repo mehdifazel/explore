@@ -1,0 +1,19 @@
+# Crypto API - Project Rules
+
+## Architecture
+- **Modular**: Shared code in `js/shared/`, exchange-specific in `js/nobitex/` and `js/wallex/`
+- **Lightweight**: Avoid heavy dependencies; prefer vanilla JS
+- **Static**: HTML works when opened directly or served via HTTP (no Node/build required)
+
+## Constraints
+- **No CORS proxy**: Never use allorigins, cors-anywhere, or similar. Direct API fetch only.
+- **No server required**: Must work as static files (GitHub Pages, file://, etc.)
+
+## Shared Modules
+- `utils.js` - Formatting, parseBaseMultiplier, hasPriceData, computeSetup
+- `tv-api.js` - Binance/third-party price fetch
+- `network-db.js` - Withdraw network data and display
+
+## Data
+- `data/nobitex-withdraw-networks.json` - Run `scripts/build-withdraw-db.ps1` to update (includes networks + withdrawal fees from Nobitex API)
+- Network DB is also embedded in `network-db.js` as fallback
