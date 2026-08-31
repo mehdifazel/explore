@@ -120,7 +120,7 @@ function serveStatic(req, res, url) {
   if (req.method !== 'GET' && req.method !== 'HEAD') return send(res, 405, 'Method not allowed');
   let pathname;
   try { pathname = decodeURIComponent(url.pathname); } catch { return send(res, 400, 'Bad request'); }
-  if (pathname === '/') pathname = '/nobitex-prices.html';
+  if (pathname === '/') pathname = '/crypto-arbitrage.html';
   const filePath = path.resolve(root, '.' + pathname);
   if (filePath !== root && !filePath.startsWith(root + path.sep)) return send(res, 403, 'Forbidden');
   fs.stat(filePath, (error, stat) => {
@@ -143,5 +143,5 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(port, '0.0.0.0', () => {
-  console.log(`Crypto dashboard: http://localhost:${port}/nobitex-prices.html`);
+  console.log(`Crypto dashboard: http://localhost:${port}/crypto-arbitrage.html`);
 });
