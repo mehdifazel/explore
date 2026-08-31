@@ -4,12 +4,13 @@
  */
 (function() {
   'use strict';
+  if (window.ACTIVE_EXCHANGE !== 'wallex') return;
 
   var C = window.WallexConfig || {};
   var Api = window.WallexApi || {};
   var U = window.SharedUtils || {};
   var TV = window.TVApi || {};
-  var Ndb = window.NetworkDb || {};
+  var NetworkDisplay = window.NetworkDb || {};
 
   var fmt = U.fmt || function(n) { return n; };
   var fmtRls = U.fmtRls || fmt;
@@ -24,14 +25,15 @@
   var diffUsdtSellSetup = U.diffUsdtSellSetup || function() { return null; };
 
   var state = {
-    filter: 'rls',
+    filter: 'tmn',
     sortCol: null,
     sortDir: 1,
-    networkFilter: '',
     stats: {},
     prevStats: {},
     tvPrices: {},
-    networkDb: {},
+    networks: {},
+    networkFilter: '',
+    networksLoading: false,
     currentOrderbookBase: null,
     globalAvgBuyMT: null,
     globalAvgSellMT: null,
@@ -39,18 +41,98 @@
     restPoll: null,
     restRetry: null,
     setupInterval: null,
-    tvInterval: null
+    tvInterval: null,
+    rlsSetupBusy: false,
+    usdtSetupBusy: false
   };
 
   var $ = {};
 
-  function getPairTagsHtml(base) {
-    return Ndb.renderPairTagsHtml ? Ndb.renderPairTagsHtml(base, state.networkDb, parseBaseMultiplier) : '';
+  function escapeHtml(value) {
+    return String(value == null ? '' : value).replace(/[&<>"']/g, function(ch) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch];
+    });
   }
 
-  function getNetworksShort(base) {
-    var nets = Ndb.getNetworks ? Ndb.getNetworks(base, state.networkDb, parseBaseMultiplier) : [];
-    return nets.map(function(n) { return Ndb.shortName ? Ndb.shortName(n) : n; }).join(' ');
+  function withdrawalNetworks(base) {
+    var value = state.networks[String(base || '').toUpperCase()];
+    return Array.isArray(value) ? value.filter(function(network) { return network.withdrawalAvailable; }) : [];
+  }
+
+  function networkLabel(network) {
+    var fullName = String(network.name || network.id || '');
+    return NetworkDisplay.shortName ? NetworkDisplay.shortName(fullName) : fullName.split(' ')[0];
+  }
+
+  function networkColor(network) {
+    var fullName = String(network.name || network.id || '');
+    return NetworkDisplay.getColor ? NetworkDisplay.getColor(fullName) : '#3d4a6e';
+  }
+
+  function networkTags(base) {
+    return withdrawalNetworks(base).map(function(network) {
+      var label = networkLabel(network);
+      var fullName = network.name || network.id;
+      var details = [];
+      if (fullName) details.push(fullName);
+      if (network.transactionFee != null) details.push('Fee: ' + network.transactionFee);
+      if (network.minWithdrawal != null) details.push('Min: ' + network.minWithdrawal);
+      return '<span class="pair-net-tag" style="background:' + escapeHtml(networkColor(network)) + '" title="' + escapeHtml(details.join(' · ')) + '">' + escapeHtml(label) + '</span>';
+    }).join('');
+  }
+
+  function matchesNetwork(base) {
+    if (!state.networkFilter) return true;
+    return withdrawalNetworks(base).some(function(network) {
+      return networkLabel(network).toUpperCase() === state.networkFilter;
+    });
+  }
+
+  function fillWallexNetworkFilter() {
+    if (!$.networkFilter) return;
+    var names = {};
+    Object.keys(state.networks).forEach(function(base) {
+      withdrawalNetworks(base).forEach(function(network) {
+        var label = networkLabel(network);
+        var key = label.toUpperCase();
+        if (key) names[key] = label;
+      });
+    });
+    $.networkFilter.innerHTML = '<option value="">All withdraw networks</option>' + Object.keys(names).sort().map(function(key) {
+      return '<option value="' + escapeHtml(key) + '">' + escapeHtml(names[key]) + '</option>';
+    }).join('');
+    $.networkFilter.hidden = false;
+    var notice = document.getElementById('networkUnavailable');
+    if (notice) notice.hidden = true;
+  }
+
+  function loadWallexNetworks() {
+    if (state.networksLoading || !Api.fetchNetworks) return;
+    var symbols = {};
+    Object.keys(state.stats).forEach(function(pair) {
+      var base = pair.replace(/-(tmn|usdt)$/, '').toUpperCase();
+      if (base && base !== 'USDT' && base !== 'TMN') symbols[base] = true;
+    });
+    state.networksLoading = true;
+    Api.fetchNetworks(Object.keys(symbols)).then(function(networks) {
+      var usableSymbols = Object.keys(networks || {}).filter(function(symbol) { return Array.isArray(networks[symbol]); });
+      if (!usableSymbols.length) {
+        var firstError = Object.keys(networks || {}).map(function(symbol) { return networks[symbol] && networks[symbol].error; }).filter(Boolean)[0];
+        throw new Error(firstError || 'Wallex returned no network data');
+      }
+      state.networks = networks || {};
+      fillWallexNetworkFilter();
+      if ($.tbody) $.tbody.dataset.rowSignature = '';
+      renderTable(state.stats);
+    }).catch(function(error) {
+      var notice = document.getElementById('networkUnavailable');
+      if (notice) {
+        notice.hidden = false;
+        notice.textContent = error && error.code === 'WALLEX_API_KEY_MISSING'
+          ? 'Set WALLEX_API_KEY on the server to load Wallex withdraw networks'
+          : 'Wallex withdraw networks unavailable: ' + (error && error.message ? error.message : 'access denied');
+      }
+    }).finally(function() { state.networksLoading = false; });
   }
 
   function initDom() {
@@ -70,7 +152,7 @@
     var bases = [];
     Object.keys(state.stats).forEach(function(k) {
       if (!hasPriceData(state.stats[k])) return;
-      if (k.indexOf('-rls') !== -1) bases.push(k.replace(/-rls$/, '').toLowerCase());
+      if (k.indexOf('-tmn') !== -1) bases.push(k.replace(/-tmn$/, '').toLowerCase());
       if (k.indexOf('-usdt') !== -1) bases.push(k.replace(/-usdt$/, '').toLowerCase());
     });
     return bases;
@@ -110,10 +192,9 @@
   }
 
   function getTargetUsdt() {
-    var mt = getMT();
-    var ur = state.stats['usdt-rls'];
-    if (!ur || !ur.bestSell || ur.bestSell <= 0) return null;
-    return mtToToman(mt) / parseFloat(ur.bestSell);
+    var effectiveUsdtBuyPrice = parseFloat(state.globalAvgBuyMT);
+    if (!Number.isFinite(effectiveUsdtBuyPrice) || effectiveUsdtBuyPrice <= 0) return null;
+    return mtToToman(getMT()) / effectiveUsdtBuyPrice;
   }
 
   function updateCell(el, val, prev) {
@@ -158,9 +239,9 @@
   function bindOrderbookTooltip(pair) {
     var tt = $.orderbookTooltip;
     if (!tt) return;
-    var parts = (pair || 'btc-rls').split('-');
-    var dst = parts[1] || 'rls';
-    var quoteUnit = dst === 'rls' ? 'TMN' : 'USDT';
+    var parts = (pair || 'btc-tmn').split('-');
+    var dst = parts[1] || 'tmn';
+    var quoteUnit = dst === 'tmn' ? 'TMN' : 'USDT';
     var rows = Array.prototype.slice.call(document.querySelectorAll('#orderbookAsksBody tr, #orderbookBidsBody tr') || []);
     rows.forEach(function(r) {
       if (r._ttEnter) r.removeEventListener('mouseenter', r._ttEnter);
@@ -194,8 +275,8 @@
     var parts = pair.split('-');
     var src = parts[0] || '';
     var srcL = src.toUpperCase();
-    var dst = parts[1] || 'rls';
-    var dstL = dst === 'rls' ? 'TMN' : 'USDT';
+    var dst = parts[1] || 'tmn';
+    var dstL = dst === 'tmn' ? 'TMN' : 'USDT';
     $.orderbookPanel.classList.add('show');
     $.orderbookTitle.textContent = srcL + ' / ' + dstL;
     $.orderbookLoading.style.display = 'block';
@@ -244,10 +325,10 @@
   }
 
   function updateTVCells() {
-    var rows = $.tbody ? $.tbody.querySelectorAll('tr[data-rls-pair], tr[data-pair]') : [];
+    var rows = $.tbody ? $.tbody.querySelectorAll('tr[data-tmn-pair], tr[data-pair]') : [];
     for (var i = 0; i < rows.length; i++) {
       var r = rows[i];
-      var base = (r.getAttribute('data-rls-pair') || r.getAttribute('data-pair') || '').replace(/-rls$|-usdt$/, '').toLowerCase();
+      var base = (r.getAttribute('data-tmn-pair') || r.getAttribute('data-pair') || '').replace(/-tmn$|-usdt$/, '').toLowerCase();
       var c = r.querySelector('[data-field="tvPrice"]');
       if (c) { var tv = base ? getTVPriceForBase(base) : null; c.textContent = tv != null ? fmtUsdtSetup(tv) : '-'; }
       var usdtB = r.querySelector('[data-field="usdtBuy"]'), usdtS = r.querySelector('[data-field="usdtSell"]');
@@ -263,25 +344,26 @@
   }
 
   function updateSetup() {
-    if (state.filter !== 'rls' || !state.stats || typeof state.stats !== 'object') return;
+    if (state.filter !== 'tmn' || state.rlsSetupBusy || !state.stats || typeof state.stats !== 'object') return;
+    state.rlsSetupBusy = true;
     var tbody = $.tbody;
     var pairs = Object.keys(state.stats)
-      .filter(function(k) { return k.indexOf('-rls') !== -1 && hasPriceData(state.stats[k]); })
+      .filter(function(k) { return k.indexOf('-tmn') !== -1 && hasPriceData(state.stats[k]); })
       .map(function(k) { return [k, state.stats[k]]; })
       .sort(function(a, b) { return (b[1].volumeDst || 0) - (a[1].volumeDst || 0); });
     var target = mtToToman(getMT());
     var i = 0;
     function next() {
-      if (i >= pairs.length) return;
+      if (i >= pairs.length) { state.rlsSetupBusy = false; return; }
       var rlsPair = pairs[i][0];
       i++;
-      var row = tbody ? tbody.querySelector('tr[data-rls-pair="' + rlsPair + '"]') : null;
+      var row = tbody ? tbody.querySelector('tr[data-tmn-pair="' + rlsPair + '"]') : null;
       if (!row) { setTimeout(next, 0); return; }
       var symbol = Api.pairToSymbol(rlsPair);
       Api.fetchDepth(symbol).then(function(d) {
         if (d.status !== 'ok' || !d.asks || !d.bids) return;
         var setup = computeSetup(d.asks, d.bids, target);
-        var base = rlsPair.replace(/-rls$/, '').toLowerCase();
+        var base = rlsPair.replace(/-tmn$/, '').toLowerCase();
         var rlsB = row.querySelector('[data-field="rlsBuySetup"]'), rlsS = row.querySelector('[data-field="rlsSellSetup"]');
         var usdtB = row.querySelector('[data-field="usdtBuy"]'), usdtS = row.querySelector('[data-field="usdtSell"]');
         var usdtBuyVal = setup.buySetup != null && state.globalAvgSellMT > 0 ? setup.buySetup / state.globalAvgSellMT : null;
@@ -301,15 +383,16 @@
   }
 
   function updateSetupUsdt() {
-    if (state.filter !== 'usdt' || !state.stats || typeof state.stats !== 'object') return;
+    if (state.filter !== 'usdt' || state.usdtSetupBusy || !state.stats || typeof state.stats !== 'object') return;
     var targetUsdt = getTargetUsdt();
     if (targetUsdt == null || targetUsdt <= 0) return;
+    state.usdtSetupBusy = true;
     var tbody = $.tbody;
     var pairRows = tbody ? Array.prototype.slice.call(tbody.querySelectorAll('tr[data-pair]')) : [];
     var pairs = pairRows.map(function(r) { return r.getAttribute('data-pair'); }).filter(Boolean);
     var i = 0;
     function next() {
-      if (i >= pairs.length) return;
+      if (i >= pairs.length) { state.usdtSetupBusy = false; return; }
       var pair = pairs[i];
       i++;
       var row = tbody ? tbody.querySelector('tr[data-pair="' + pair + '"]') : null;
@@ -349,7 +432,7 @@
   function sortTableRows(sortKey) {
     var tbody = $.tbody;
     if (!tbody) return;
-    var rows = Array.prototype.slice.call(tbody.querySelectorAll('tr[data-rls-pair], tr[data-pair]') || []);
+    var rows = Array.prototype.slice.call(tbody.querySelectorAll('tr[data-tmn-pair], tr[data-pair]') || []);
     if (!rows.length) return;
     var dir = (state.sortCol === sortKey) ? -state.sortDir : 1;
     state.sortCol = sortKey;
@@ -379,30 +462,27 @@
     var tbody = $.tbody;
     if (!thead || !tbody) return;
 
-    var netFilter = state.networkFilter || '';
-    var hasNetwork = Ndb.hasNetwork || function() { return true; };
-    if (state.filter === 'rls') {
+    if (state.filter === 'tmn') {
       thead.innerHTML = RLS_HEAD();
       var pairs = Object.keys(stats)
-        .filter(function(k) { return k.indexOf('-rls') !== -1 && hasPriceData(stats[k]) && hasNetwork(k.replace(/-rls$/, '').toLowerCase(), netFilter, state.networkDb, parseBaseMultiplier); })
+        .filter(function(k) { return k.indexOf('-tmn') !== -1 && hasPriceData(stats[k]) && matchesNetwork(k.replace(/-tmn$/, '')); })
         .map(function(k) { return [k, stats[k]]; })
         .sort(function(a, b) { return (b[1].volumeDst || 0) - (a[1].volumeDst || 0); });
 
-      var filterChanged = (tbody.dataset.netFilter || '') !== netFilter; tbody.dataset.netFilter = netFilter;
-      if (!tbody.querySelector('tr[data-rls-pair]') || filterChanged) {
+      var rowSignature = pairs.map(function(item) { return item[0]; }).join('|');
+      if (!tbody.querySelector('tr[data-tmn-pair]') || tbody.dataset.rowSignature !== rowSignature) {
         tbody.innerHTML = pairs.map(function(item) {
           var rlsPair = item[0], s = item[1];
-          var base = rlsPair.replace(/-rls$/, '').toLowerCase(), m = base.toUpperCase();
+          var base = rlsPair.replace(/-tmn$/, '').toLowerCase(), m = base.toUpperCase();
           var dc = (s.dayChange != null && s.dayChange !== '') ? String(s.dayChange) : '';
-          var tags = getPairTagsHtml(base);
-          var nets = getNetworksShort(base);
-          return '<tr data-rls-pair="' + rlsPair + '" data-networks="' + nets + '" data-day-change="' + dc + '" onclick="event.stopPropagation(); window.WallexApp.showOrderbook(\'' + rlsPair + '\')"><td class="pair">' + m + tags + '</td><td class="price" data-field="rls-bestBuy"></td><td class="price" data-field="rls-bestSell"></td><td class="price" data-field="rls-latest"></td><td class="positive" data-field="rls-dayChange"></td><td class="price" data-field="rlsSellSetup"></td><td class="price" data-field="rlsBuySetup"></td><td class="price" data-field="usdtSell"></td><td class="price" data-field="usdtBuy"></td><td class="price" data-field="tvPrice"></td></tr>';
+          return '<tr data-tmn-pair="' + rlsPair + '" data-day-change="' + dc + '" onclick="event.stopPropagation(); window.WallexApp.showOrderbook(\'' + rlsPair + '\')"><td class="pair">' + m + networkTags(base) + '</td><td class="price" data-field="rls-bestBuy"></td><td class="price" data-field="rls-bestSell"></td><td class="price" data-field="rls-latest"></td><td class="positive" data-field="rls-dayChange"></td><td class="price" data-field="rlsSellSetup"></td><td class="price" data-field="rlsBuySetup"></td><td class="price" data-field="usdtSell"></td><td class="price" data-field="usdtBuy"></td><td class="price" data-field="tvPrice"></td></tr>';
         }).join('');
+        tbody.dataset.rowSignature = rowSignature;
       }
 
       pairs.forEach(function(item) {
         var rlsPair = item[0];
-        var row = tbody.querySelector('tr[data-rls-pair="' + rlsPair + '"]');
+        var row = tbody.querySelector('tr[data-tmn-pair="' + rlsPair + '"]');
         if (!row) return;
         var s = stats[rlsPair] || {}, prev = state.prevStats[rlsPair] || {};
         ['bestBuy', 'bestSell', 'latest', 'dayChange'].forEach(function(f) {
@@ -422,20 +502,19 @@
     } else {
       thead.innerHTML = USDT_HEAD();
       var usdtPairs = Object.keys(stats)
-        .filter(function(k) { return k.indexOf('-usdt') !== -1 && hasPriceData(stats[k]) && hasNetwork(k.replace(/-usdt$/, '').toLowerCase(), netFilter, state.networkDb, parseBaseMultiplier); })
+        .filter(function(k) { return k.indexOf('-usdt') !== -1 && hasPriceData(stats[k]) && matchesNetwork(k.replace(/-usdt$/, '')); })
         .map(function(k) { return [k, stats[k]]; })
         .sort(function(a, b) { return (b[1].volumeDst || 0) - (a[1].volumeDst || 0); });
 
-      var filterChanged = (tbody.dataset.netFilter || '') !== netFilter; tbody.dataset.netFilter = netFilter;
-      if (!tbody.querySelector('tr[data-pair]') || tbody.querySelector('tr[data-rls-pair]') || filterChanged) {
+      var rowSignature = usdtPairs.map(function(item) { return item[0]; }).join('|');
+      if (!tbody.querySelector('tr[data-pair]') || tbody.querySelector('tr[data-tmn-pair]') || tbody.dataset.rowSignature !== rowSignature) {
         tbody.innerHTML = usdtPairs.map(function(item) {
           var pair = item[0], s = item[1];
           var base = pair.replace(/-usdt$/, '').toLowerCase(), m = base.toUpperCase();
-          var tags = getPairTagsHtml(base);
-          var nets = getNetworksShort(base);
           var dc = (s.dayChange != null && s.dayChange !== '') ? String(s.dayChange) : '';
-          return '<tr data-pair="' + pair + '" data-networks="' + nets + '" data-day-change="' + dc + '" onclick="event.stopPropagation(); window.WallexApp.showOrderbook(\'' + pair + '\')"><td class="pair">' + m + tags + '</td><td class="price" data-field="bestBuy"></td><td class="price" data-field="bestSell"></td><td class="price" data-field="latest"></td><td class="positive" data-field="dayChange"></td><td class="price" data-field="usdtSell"></td><td class="price" data-field="usdtBuy"></td><td class="price" data-field="tvPrice"></td></tr>';
+          return '<tr data-pair="' + pair + '" data-day-change="' + dc + '" onclick="event.stopPropagation(); window.WallexApp.showOrderbook(\'' + pair + '\')"><td class="pair">' + m + networkTags(base) + '</td><td class="price" data-field="bestBuy"></td><td class="price" data-field="bestSell"></td><td class="price" data-field="latest"></td><td class="positive" data-field="dayChange"></td><td class="price" data-field="usdtSell"></td><td class="price" data-field="usdtBuy"></td><td class="price" data-field="tvPrice"></td></tr>';
         }).join('');
+        tbody.dataset.rowSignature = rowSignature;
       }
       usdtPairs.forEach(function(item) {
         var pair = item[0], s = item[1];
@@ -459,8 +538,7 @@
     }
     if ($.lastUpdate) $.lastUpdate.textContent = new Date().toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' });
     updateTVCells();
-    if (state.filter === 'usdt') updateSetupUsdt();
-    var ur = stats['usdt-rls'];
+    var ur = stats['usdt-tmn'];
     if (ur) {
       if ($.usdtBuy) $.usdtBuy.textContent = fmtPrice(ur.bestSell);
       if ($.usdtSell) $.usdtSell.textContent = fmtPrice(ur.bestBuy);
@@ -478,9 +556,11 @@
     Api.fetchMarkets().then(function(stats) {
       if (stats && Object.keys(stats).length) {
         state.stats = stats;
+        if ($.connectionWarning) $.connectionWarning.style.display = 'none';
         renderTable(state.stats);
+        loadWallexNetworks();
       }
-    }).catch(function() {});
+    }).catch(function() { if ($.connectionWarning) $.connectionWarning.style.display = 'block'; });
   }
 
   function initRest() {
@@ -495,8 +575,9 @@
         if ($.connectionWarning) $.connectionWarning.style.display = 'none';
         if (state.restRetry) { clearTimeout(state.restRetry); state.restRetry = null; }
         renderTable(state.stats);
+        loadWallexNetworks();
         if (!state.setupInterval) {
-          state.setupInterval = setInterval(function() { if (state.filter === 'rls') updateSetup(); else if (state.filter === 'usdt') updateSetupUsdt(); }, C.SETUP_INTERVAL_MS || 5000);
+          state.setupInterval = setInterval(function() { if (state.filter === 'tmn') updateSetup(); else if (state.filter === 'usdt') updateSetupUsdt(); }, C.SETUP_INTERVAL_MS || 5000);
           updateSetup();
           updateSetupUsdt();
         }
@@ -521,22 +602,12 @@
 
   window.WallexApp = { showOrderbook: showOrderbook };
 
-  function fillNetworkFilter() {
-    var sel = $.networkFilter;
-    if (!sel) return;
-    var opts = Ndb.getAllNetworkShortNames ? Ndb.getAllNetworkShortNames(state.networkDb) : [];
-    sel.innerHTML = '<option value="">All networks</option>' + opts.map(function(n) { return '<option value="' + n + '">' + n + '</option>'; }).join('');
-  }
-
   document.addEventListener('DOMContentLoaded', function() {
     initDom();
     if ($.updateIntervalSec) $.updateIntervalSec.textContent = Math.round((C.REST_POLL_MS || 5000) / 1000);
-    state.networkDb = Ndb.DB || {};
-    function applyNetworkDb(d) { if (d && Object.keys(d).length) { state.networkDb = d; fillNetworkFilter(); if (Object.keys(state.stats).length) renderTable(state.stats); } }
-    (Ndb.fetchFromApi && Ndb.fetchFromApi().then(applyNetworkDb).catch(function() {
-      fetch('data/nobitex-withdraw-networks.json', { cache: 'no-store' }).then(function(r) { return r.json(); }).then(applyNetworkDb).catch(function() {});
-    })) || fetch('data/nobitex-withdraw-networks.json', { cache: 'no-store' }).then(function(r) { return r.json(); }).then(applyNetworkDb).catch(function() {});
-    if (Ndb.fetchFromApi && Ndb.REFRESH_INTERVAL_MS) setInterval(function() { Ndb.fetchFromApi().then(applyNetworkDb).catch(function() {}); }, Ndb.REFRESH_INTERVAL_MS);
+    if ($.networkFilter) $.networkFilter.hidden = true;
+    var networkUnavailable = document.getElementById('networkUnavailable');
+    if (networkUnavailable) networkUnavailable.hidden = false;
     initRest();
     if (TV.fetch) TV.fetch(C.TV_SOURCE, function(prices) {
       state.tvPrices = prices;
@@ -554,11 +625,13 @@
         document.querySelectorAll('.tab').forEach(function(b) { b.classList.remove('active'); });
         this.classList.add('active');
         state.filter = this.getAttribute('data-filter');
-        if (Object.keys(state.stats).length) renderTable(state.stats);
+        if (Object.keys(state.stats).length) { renderTable(state.stats); if (state.filter === 'tmn') updateSetup(); else updateSetupUsdt(); }
       });
     });
-    fillNetworkFilter();
-    if ($.networkFilter) $.networkFilter.addEventListener('change', function() { state.networkFilter = (this.value || ''); if (Object.keys(state.stats).length) renderTable(state.stats); });
+    if ($.networkFilter) $.networkFilter.addEventListener('change', function() {
+      state.networkFilter = String(this.value || '').toUpperCase();
+      renderTable(state.stats);
+    });
     if ($.priceTable) $.priceTable.addEventListener('click', function(e) {
       var th = e.target.closest('th.sortable');
       if (th && th.dataset.sort) sortTableRows(th.dataset.sort);
@@ -567,8 +640,8 @@
 
     if ($.setupRefreshBtn) $.setupRefreshBtn.addEventListener('click', function() {
       state.lastUsdtAvgTime = 0;
-      updateUsdtAvg(function() { if (state.filter === 'rls') updateSetup(); else if (state.filter === 'usdt') updateSetupUsdt(); });
+      updateUsdtAvg(function() { if (state.filter === 'tmn') updateSetup(); else if (state.filter === 'usdt') updateSetupUsdt(); });
     });
-    if ($.usdtAvgMTInput) $.usdtAvgMTInput.addEventListener('input', function() { if (state.filter === 'usdt' && Object.keys(state.stats).length) updateSetupUsdt(); });
+    if ($.usdtAvgMTInput) $.usdtAvgMTInput.addEventListener('input', function() { state.lastUsdtAvgTime = 0; });
   });
 })();

@@ -3,6 +3,7 @@
  */
 (function() {
   'use strict';
+  if (window.ACTIVE_EXCHANGE && window.ACTIVE_EXCHANGE !== 'nobitex') return;
   var C = window.NobitexConfig || {};
   var Api = window.NobitexApi || {};
   var U = window.SharedUtils || {};

@@ -3,12 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Live Prices - Nobitex</title>
+  <title>Crypto Arbitrage Prices</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>Live Prices</h1>
-  <p class="subtitle">Market: Nobitex · Updates every <span id="updateIntervalSec">5</span> seconds</p>
+  <div class="page-header">
+    <div>
+      <h1>Live Prices</h1>
+      <p class="subtitle">Market: <span id="exchangeName">Nobitex</span> · Updates every <span id="updateIntervalSec">5</span> seconds</p>
+    </div>
+    <label class="exchange-switcher">Exchange
+      <select id="exchangeSelect" aria-label="Select exchange">
+        <option value="nobitex">Nobitex</option>
+        <option value="wallex">Wallex</option>
+      </select>
+    </label>
+  </div>
 
   <div class="main-wrap">
     <div id="orderbookTooltip" class="orderbook-tooltip" style="display:none"></div>
@@ -34,7 +44,7 @@
     <div class="main-content">
       <div class="stats-bar">
         <div class="stat usdt-rial">
-          <strong>USDT/RLS</strong><br>
+          <strong id="fiatPairLabel">USDT/RLS</strong><br>
           <span style="color:#00ff88">Buy:</span> <span id="usdtBuy">-</span>
           <span style="color:#ff4466">Sell:</span> <span id="usdtSell">-</span>
         </div>
@@ -44,11 +54,11 @@
         </div>
         <div class="stat usdt-avg-100mt">
           <strong>Avg buy (<span id="usdtAvgBuyMTLabel">100</span> MT)</strong><br>
-          <span id="usdtAvgBuy100MT">-</span> <span class="stat-unit">RLS</span>
+          <span id="usdtAvgBuy100MT">-</span> <span class="stat-unit fiat-unit">RLS</span>
         </div>
         <div class="stat usdt-avg-100mt">
           <strong>Avg sell (<span id="usdtAvgSellMTLabel">100</span> MT)</strong><br>
-          <span id="usdtAvgSell100MT">-</span> <span class="stat-unit">RLS</span>
+          <span id="usdtAvgSell100MT">-</span> <span class="stat-unit fiat-unit">RLS</span>
         </div>
         <div class="stat">Last Update: <span id="lastUpdate">-</span></div>
         <div class="stat">Markets: <span id="marketCount">0</span></div>
@@ -56,11 +66,12 @@
       </div>
 
       <div class="tabs">
-        <button class="tab active" data-filter="rls">RLS Market</button>
+        <button id="fiatMarketTab" class="tab active" data-filter="rls">RLS Market</button>
         <button class="tab" data-filter="usdt">USDT Market</button>
         <select id="networkFilter" class="network-filter" title="Filter by withdraw network">
           <option value="">All networks</option>
         </select>
+        <span id="networkUnavailable" class="network-unavailable" hidden>Wallex network data requires authenticated account access</span>
       </div>
 
       <div id="connectionWarning" class="connection-warning">Connection error – retrying...</div>
@@ -81,9 +92,38 @@
   <script src="js/shared/utils.js"></script>
   <script src="js/shared/tv-api.js"></script>
   <script src="js/shared/network-db.js"></script>
+  <script>
+  (function() {
+    var params = new URLSearchParams(window.location.search);
+    var exchange = params.get('exchange') === 'wallex' ? 'wallex' : 'nobitex';
+    var names = { nobitex: 'Nobitex', wallex: 'Wallex' };
+    var units = { nobitex: 'RLS', wallex: 'TMN' };
+    var select = document.getElementById('exchangeSelect');
+    window.ACTIVE_EXCHANGE = exchange;
+    select.value = exchange;
+    document.getElementById('exchangeName').textContent = names[exchange];
+    document.getElementById('fiatPairLabel').textContent = 'USDT/' + units[exchange];
+    document.getElementById('fiatMarketTab').textContent = units[exchange] + ' Market';
+    document.getElementById('fiatMarketTab').dataset.filter = exchange === 'wallex' ? 'tmn' : 'rls';
+    document.querySelectorAll('.fiat-unit').forEach(function(el) { el.textContent = units[exchange]; });
+    document.getElementById('usdtAvgMTInput').title = exchange === 'wallex'
+      ? 'Million Toman (1 MT = 1e6 TMN)'
+      : 'Million Toman (1 MT = 1e6 Toman = 1e7 RLS)';
+    document.title = 'Live Prices - ' + names[exchange];
+    select.addEventListener('change', function() {
+      var next = new URL(window.location.href);
+      if (this.value === 'wallex') next.searchParams.set('exchange', 'wallex');
+      else next.searchParams.delete('exchange');
+      window.location.href = next.toString();
+    });
+  })();
+  </script>
   <script src="js/nobitex/config.js"></script>
   <script src="js/nobitex/api.js"></script>
+  <script src="js/wallex/config.js"></script>
+  <script src="js/wallex/api.js"></script>
   <script src="js/nobitex/app.js"></script>
+  <script src="js/wallex/app.js"></script>
   <script>
   // Fallback: if app.js fails or API never responds, stop showing Loading after 12s
   (function(){

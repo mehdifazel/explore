@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "http-server . -p 8080 -c-1",
-    "test": "node tests/setup-logic.test.js"
+    "start": "node server.js",
+    "test": "node tests/setup-logic.test.js && node tests/wallex-adapter.test.js"
   },
   "keywords": [],
   "author": "",
